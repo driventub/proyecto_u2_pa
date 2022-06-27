@@ -1,0 +1,18 @@
+20:10:39.171 [restartedMain] INFO  com.uce.unidad2.Unidad2Application - Starting Unidad2Application using Java 17.0.3 on DESKTOP-E9HB7V2 with PID 5448 (C:\Users\aldaz\Documents\paulo\Sexto_Septimo\PII\workspace\unidad_2\unidad2\target\classes started by aldaz in c:\Users\aldaz\Documents\paulo\Sexto_Septimo\PII\workspace\unidad_2\unidad2)
+20:10:39.184 [restartedMain] INFO  com.uce.unidad2.Unidad2Application - No active profile set, falling back to 1 default profile: "default"
+20:10:39.355 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+20:10:40.416 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+20:10:40.464 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 JPA repository interfaces.
+20:10:41.534 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+20:10:41.733 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+20:10:42.191 [restartedMain] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+20:10:43.090 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+20:10:43.874 [restartedMain] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+20:10:43.900 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+20:10:44.314 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+20:10:44.383 [restartedMain] INFO  com.uce.unidad2.Unidad2Application - Started Unidad2Application in 6.599 seconds (JVM running for 8.766)
+20:10:44.383 [restartedMain] ERROR com.uce.unidad2.Unidad2Application - It is an error logger.
+20:10:44.399 [restartedMain] FATAL com.uce.unidad2.Unidad2Application - It is a fatal logger.
+20:10:44.401 [restartedMain] INFO  com.uce.unidad2.Unidad2Application - It is a info logger.
+20:10:44.401 [restartedMain] WARN  com.uce.unidad2.Unidad2Application - It is a warn logger.
+20:10:44.423 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
