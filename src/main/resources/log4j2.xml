@@ -16,7 +16,7 @@
 	</Appenders>
 	<Loggers>
 		<Root level="info">
-			<AppenderRef ref="MyFile"/>
+			<!-- <AppenderRef ref="MyFile"/> -->
 			<AppenderRef ref="Console"/>
 		</Root>
 	</Loggers>
