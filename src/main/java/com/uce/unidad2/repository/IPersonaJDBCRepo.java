@@ -1,10 +1,13 @@
 package com.uce.unidad2.repository;
 
-import com.uce.unidad2.to.Persona;
+import java.util.List;
+
+import com.uce.unidad2.to.PersonaTo;
 
 public interface IPersonaJDBCRepo {
-    public Persona buscarId(Integer id);
-    public void insertar(Persona p);
-    public void actualizar(Persona p);
+    public PersonaTo buscarId(Integer id);
+    public void insertar(PersonaTo p);
+    public void actualizar(PersonaTo p);
     public void eliminar(Integer id);
+    public List<PersonaTo> buscarTodos();
 }

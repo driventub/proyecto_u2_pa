@@ -2,8 +2,6 @@ package com.uce.unidad2;
 
 
 
-import java.math.BigDecimal;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +9,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.unidad2.tarea13.modelo.Estudiante;
-import com.uce.unidad2.tarea13.service.IEstudianteService;
+import com.uce.unidad2.repository.modelo.Persona;
+import com.uce.unidad2.service.IPersonaJpaService;
 
 
 
@@ -21,9 +19,8 @@ import com.uce.unidad2.tarea13.service.IEstudianteService;
 public class Unidad2Application implements CommandLineRunner{
 
 
-
 	@Autowired
-	private IEstudianteService estudianteService;
+	private IPersonaJpaService personaJpaService;
 
 	private static Logger logger =  LogManager.getLogger(Unidad2Application.class);
 
@@ -33,26 +30,30 @@ public class Unidad2Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Estudiante e = new Estudiante();
-		e.setId(1);
-		e.setNombre("Valeria");
-		e.setApellido("Botas");
-		e.setCurso("Algebra Lineal I");
-		e.setValorMatricula(new BigDecimal("20.05"));
+		Persona p = new Persona();
+		p.setId(1);
+		p.setNombre("Sebastia");
+		p.setApellido("Piero");
 
-		// insertar
-		this.estudianteService.insertar(e);
+		// Insertar
+		this.personaJpaService.insertar(p);
 
-		// actualizar
-		e.setCurso("Algebra Lineal II");
-		this.estudianteService.actualizar(e);
 
-		// buscar
-		Estudiante estu =this.estudianteService.buscarId(1);
-		logger.info(estu.toString());
 
-		// eliminar
-		this.estudianteService.eliminar(1);
+		// Actualizar
+		p.setNombre("Sebastian");
+		this.personaJpaService.actualizar(p);
+
+		// Eliminar
+		this.personaJpaService.eliminar(1);
+
+		// Buscar
+		Persona pBuscado = this.personaJpaService.buscarId(6);
+		logger.info( "Dato con JPA" +pBuscado.toString());
+
+		
+
+
 
 	}
 

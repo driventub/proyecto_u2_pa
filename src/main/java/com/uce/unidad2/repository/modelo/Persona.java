@@ -1,21 +1,25 @@
-package com.uce.unidad2.to;
+package com.uce.unidad2.repository.modelo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "persona")
 public class Persona {
-
+    
+    @Id
+    @Column(name = "id")
     private Integer id;
 
+    @Column(name = "nombre")
     private String nombre;
 
+    @Column(name = "apellido")
     private String apellido;
 
-    public Persona(Integer id, String nombre, String apellido) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-    }
-
-    public Persona() {
-    }
+    
 
     // Set y Get
 
