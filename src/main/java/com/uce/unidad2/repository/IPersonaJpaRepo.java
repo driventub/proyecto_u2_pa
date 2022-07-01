@@ -1,6 +1,8 @@
-package com.uce.unidad2.repository.modelo;
+package com.uce.unidad2.repository;
 
 import java.util.List;
+
+import com.uce.unidad2.repository.modelo.Persona;
 
 public interface IPersonaJpaRepo {
     public Persona buscarId(Integer id);

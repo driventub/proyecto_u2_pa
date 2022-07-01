@@ -1,10 +1,10 @@
-package com.uce.unidad2.tarea13.service;
+package com.uce.unidad2.tareas.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uce.unidad2.tarea13.modelo.Estudiante;
-import com.uce.unidad2.tarea13.repository.IEstudianteRepo;
+import com.uce.unidad2.tareas.modelo.EstudianteJdbc;
+import com.uce.unidad2.tareas.repository.IEstudianteRepo;
 
 @Service
 public class EstudianteServiceImpl implements IEstudianteService {
@@ -12,19 +12,19 @@ public class EstudianteServiceImpl implements IEstudianteService {
     private IEstudianteRepo jdbcRepo;
     
     @Override
-    public Estudiante buscarId(Integer id) {
+    public EstudianteJdbc buscarId(Integer id) {
         
         return this.jdbcRepo.buscarId(id);
     }
     
     @Override
-    public void insertar(Estudiante estu) {
+    public void insertar(EstudianteJdbc estu) {
         this.jdbcRepo.insertar(estu);
         
     }
     
     @Override
-    public void actualizar(Estudiante estu) {
+    public void actualizar(EstudianteJdbc estu) {
         this.jdbcRepo.actualizar(estu);
         
     }

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uce.unidad2.repository.modelo.IPersonaJpaRepo;
+import com.uce.unidad2.repository.IPersonaJpaRepo;
 import com.uce.unidad2.repository.modelo.Persona;
 
 @Service

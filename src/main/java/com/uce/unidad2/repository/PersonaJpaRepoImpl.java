@@ -1,4 +1,4 @@
-package com.uce.unidad2.repository.modelo;
+package com.uce.unidad2.repository;
 
 import java.util.List;
 
@@ -7,6 +7,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.uce.unidad2.repository.modelo.Persona;
 
 @Repository
 @Transactional

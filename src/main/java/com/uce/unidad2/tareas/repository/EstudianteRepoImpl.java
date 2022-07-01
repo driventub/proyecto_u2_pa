@@ -1,11 +1,11 @@
-package com.uce.unidad2.tarea13.repository;
+package com.uce.unidad2.tareas.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.uce.unidad2.tarea13.modelo.Estudiante;
+import com.uce.unidad2.tareas.modelo.EstudianteJdbc;
 
 @Repository
 public class EstudianteRepoImpl implements IEstudianteRepo {
@@ -14,21 +14,21 @@ public class EstudianteRepoImpl implements IEstudianteRepo {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Estudiante buscarId(Integer id) {
+    public EstudianteJdbc buscarId(Integer id) {
 
         return this.jdbcTemplate.queryForObject("select * from estudiante where id=?", new Object[] { id },
-                new BeanPropertyRowMapper<Estudiante>(Estudiante.class));
+                new BeanPropertyRowMapper<EstudianteJdbc>(EstudianteJdbc.class));
     }
 
     @Override
-    public void insertar(Estudiante estu) {
+    public void insertar(EstudianteJdbc estu) {
         this.jdbcTemplate.update("insert into estudiante (id, nombre, apellido, curso, valor_matricula) values (?,?,?,?,?)",
                 new Object[] { estu.getId(), estu.getNombre(), estu.getApellido(), estu.getCurso(), estu.getValorMatricula() });
 
     }
 
     @Override
-    public void actualizar(Estudiante estu) {
+    public void actualizar(EstudianteJdbc estu) {
         this.jdbcTemplate.update("update estudiante set nombre=?, apellido=?, curso=?, valor_matricula=?  where id=?",
                 new Object[] { estu.getNombre(), estu.getApellido(), estu.getCurso(), estu.getValorMatricula(),estu.getId() });
 
