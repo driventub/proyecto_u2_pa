@@ -31,9 +31,9 @@ public class Unidad2Application implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		Persona p = new Persona();
-		p.setId(1);
-		p.setNombre("Sebastia");
-		p.setApellido("Piero");
+		// p.setId(8);
+		p.setNombre("Susi");
+		p.setApellido("Bolaños");
 
 		// Insertar
 		this.personaJpaService.insertar(p);
@@ -41,15 +41,15 @@ public class Unidad2Application implements CommandLineRunner{
 
 
 		// Actualizar
-		p.setNombre("Sebastian");
-		this.personaJpaService.actualizar(p);
+		// p.setNombre("Palbo");
+		// this.personaJpaService.actualizar(p);
 
 		// Eliminar
-		this.personaJpaService.eliminar(1);
+		// this.personaJpaService.eliminar(1);
 
 		// Buscar
 		Persona pBuscado = this.personaJpaService.buscarId(6);
-		logger.info( "Dato con JPA" +pBuscado.toString());
+		// logger.info( "Dato con JPA" +pBuscado.toString());
 
 		
 
