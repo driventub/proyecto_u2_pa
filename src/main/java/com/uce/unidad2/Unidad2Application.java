@@ -2,6 +2,8 @@ package com.uce.unidad2;
 
 
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.uce.unidad2.repository.modelo.Persona;
 import com.uce.unidad2.service.IPersonaJpaService;
+
+
 
 
 
@@ -32,24 +36,38 @@ public class Unidad2Application implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		Persona p = new Persona();
 		// p.setId(8);
-		p.setNombre("Susi");
+		p.setNombre("Susana");
 		p.setApellido("Bolaños");
+		p.setGenero("Femenino");
+		p.setCedula("172036829-1");
 
 		// Insertar
-		this.personaJpaService.insertar(p);
+		// this.personaJpaService.insertar(p);
 
 
 
 		// Actualizar
 		// p.setNombre("Palbo");
+		// p.setCedula("180426829-1");
 		// this.personaJpaService.actualizar(p);
 
 		// Eliminar
-		// this.personaJpaService.eliminar(1);
+		this.personaJpaService.eliminar(52);
 
 		// Buscar
-		Persona pBuscado = this.personaJpaService.buscarId(6);
+		// Persona pBuscado = this.personaJpaService.buscarId(6);
 		// logger.info( "Dato con JPA" +pBuscado.toString());
+		
+		Persona pBuscado = this.personaJpaService.buscarCedula("180426829-1");
+		logger.info( "Dato con JPQL " +pBuscado.toString());
+
+		List<Persona> pLista = this.personaJpaService.buscarApellido("Bolaños");
+
+		for (Persona per : pLista) {
+			logger.info(per.toString());
+		}
+
+		
 
 		
 
