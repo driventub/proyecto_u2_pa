@@ -58,9 +58,17 @@ public class PersonaJpaRepoImpl implements IPersonaJpaRepo {
     }
 
     @Override
-    public List<Persona> buscarGenero(String Genero) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Persona> buscarGenero(String genero) {
+        Query jpqlQuery = this.entityManager.createQuery("SELECT p FROM Persona p WHERE p.genero =:genero")
+        .setParameter("genero", genero);
+        return (List<Persona>) jpqlQuery.getResultList();
+    }
+
+    @Override
+    public List<Persona> buscarNombre(String nombre) {
+        Query jpqlQuery = this.entityManager.createQuery("SELECT p FROM Persona p WHERE p.nombre =:nombre")
+        .setParameter("nombre", nombre);
+        return (List<Persona>) jpqlQuery.getResultList();
     }
 
 }

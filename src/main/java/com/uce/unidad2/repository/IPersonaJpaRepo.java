@@ -5,9 +5,11 @@ import java.util.List;
 import com.uce.unidad2.repository.modelo.Persona;
 
 public interface IPersonaJpaRepo {
-    public List<Persona> buscarGenero(String Genero);
+    public List<Persona> buscarGenero(String genero);
 
     public List<Persona> buscarApellido(String apellido);
+
+    public List<Persona> buscarNombre(String nombre);
 
     public Persona buscarId(Integer id);
 

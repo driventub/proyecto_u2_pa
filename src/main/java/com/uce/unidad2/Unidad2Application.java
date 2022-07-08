@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.pattern.LoggerPatternConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -52,24 +53,36 @@ public class Unidad2Application implements CommandLineRunner{
 		// this.personaJpaService.actualizar(p);
 
 		// Eliminar
-		this.personaJpaService.eliminar(52);
+		// this.personaJpaService.eliminar(52);
 
 		// Buscar
 		// Persona pBuscado = this.personaJpaService.buscarId(6);
 		// logger.info( "Dato con JPA" +pBuscado.toString());
 		
+		logger.info("**********************CEDULA*******************");
+
 		Persona pBuscado = this.personaJpaService.buscarCedula("180426829-1");
 		logger.info( "Dato con JPQL " +pBuscado.toString());
 
+
+		logger.info("**********************APELLIDO*******************");
 		List<Persona> pLista = this.personaJpaService.buscarApellido("Bolaños");
 
 		for (Persona per : pLista) {
 			logger.info(per.toString());
 		}
 
-		
+		logger.info("**********************NOMBRE*******************");
+		List<Persona> pNombre = this.personaJpaService.buscarNombre("Carlos");
+		for (Persona per : pNombre) {
+			logger.info(per.toString());
+		}
 
-		
+		logger.info("**********************GENERO*******************");
+		List<Persona> pGenero = this.personaJpaService.buscarGenero("Masculino");
+		for (Persona per : pGenero) {
+			logger.info(per.toString());
+		}
 
 
 
