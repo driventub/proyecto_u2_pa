@@ -20,4 +20,8 @@ public interface IPersonaJpaService {
     public void eliminar(Integer id);
 
     public Persona buscarCedula(String cedula);
+
+    public Integer actualizarPorApellido(String apellido, String genero);
+
+    public Integer eliminarPorGenero(String genero);
 }

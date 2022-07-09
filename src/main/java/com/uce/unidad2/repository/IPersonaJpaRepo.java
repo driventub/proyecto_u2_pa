@@ -21,4 +21,8 @@ public interface IPersonaJpaRepo {
 
     public Persona buscarCedula(String cedula);
 
+    public Integer actualizarPorApellido(String apellido, String genero);
+
+    public Integer eliminarPorGenero(String genero);
+
 }
