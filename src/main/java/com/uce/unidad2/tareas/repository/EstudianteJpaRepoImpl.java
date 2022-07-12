@@ -1,9 +1,12 @@
 package com.uce.unidad2.tareas.repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -24,7 +27,10 @@ public class EstudianteJpaRepoImpl implements IEstudianteJpaRepo {
 
     @Override
     public List<Estudiante> buscarTodos() {
-        return null;
+        TypedQuery<Estudiante> myTypedQuery = this.e
+        .createQuery("SELECT e FROM Estudiante e ",
+                Estudiante.class);
+        return myTypedQuery.getResultList();
 
     }
 
@@ -45,6 +51,62 @@ public class EstudianteJpaRepoImpl implements IEstudianteJpaRepo {
     public void insertar(Estudiante e) {
         this.e.persist(e);
 
+    }
+
+    @Override
+    public List<Estudiante> buscarValorTyped(BigDecimal valor) {
+        TypedQuery<Estudiante> myTypedQuery = this.e
+                .createQuery("SELECT e FROM Estudiante e WHERE e.valorMatricula >=:valor ORDER BY e.apellido ",
+                        Estudiante.class)
+                .setParameter("valor", valor);
+        return myTypedQuery.getResultList();
+    }
+
+    @Override
+    public List<Estudiante> buscarValorNamed(BigDecimal valor) {
+        Query namedQuery = this.e
+                .createNamedQuery("Estudiante.buscarValor")
+                .setParameter("valor", valor);
+        return (List<Estudiante>) namedQuery.getResultList();
+    }
+
+    @Override
+    public List<Estudiante> buscarValorTypedNamed(BigDecimal valor) {
+        TypedQuery<Estudiante> myTypedQuery = this.e
+                .createNamedQuery("Estudiante.buscarValor", Estudiante.class)
+                .setParameter("valor", valor);
+        return myTypedQuery.getResultList();
+    }
+
+    @Override
+    public Estudiante buscarEstudianteTyped(String nombre, String apellido, String curso) {
+        TypedQuery<Estudiante> myTypedQuery = this.e
+                .createQuery("SELECT e FROM Estudiante e WHERE e.nombre =:nombre AND e.apellido=:apellido AND e.curso=:curso",
+                        Estudiante.class)
+                .setParameter("curso", curso)
+                .setParameter("nombre", nombre)
+                .setParameter("apellido", apellido);
+        return myTypedQuery.getSingleResult();
+    }
+
+    @Override
+    public Estudiante buscarEstudianteNamed(String nombre, String apellido, String curso) {
+        Query namedQuery = this.e
+                .createNamedQuery("Estudiante.buscarEstudiante")
+                .setParameter("curso", curso)
+                .setParameter("nombre", nombre)
+                .setParameter("apellido", apellido);
+        return (Estudiante) namedQuery.getSingleResult();
+    }
+
+    @Override
+    public Estudiante buscarEstudianteTypedNamed(String nombre, String apellido, String curso) {
+        TypedQuery<Estudiante> myTypedQuery = this.e
+                .createNamedQuery("Estudiante.buscarEstudiante", Estudiante.class)
+                .setParameter("curso", curso)
+                .setParameter("nombre", nombre)
+                .setParameter("apellido", apellido);
+        return myTypedQuery.getSingleResult();
     }
 
 }

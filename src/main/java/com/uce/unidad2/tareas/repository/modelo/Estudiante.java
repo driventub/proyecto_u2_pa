@@ -4,15 +4,23 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "estudiante")
+@NamedQuery(name = "Estudiante.buscarValor", query = "SELECT e FROM Estudiante e WHERE e.valorMatricula >=:valor ORDER BY e.apellido ")
+@NamedQuery(name = "Estudiante.buscarEstudiante", query = "SELECT e FROM Estudiante e WHERE e.nombre =:nombre AND e.apellido=:apellido AND e.curso=:curso")
 
 public class Estudiante {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estu_id_seq")
+    @SequenceGenerator(name = "estu_id_seq", sequenceName = "estu_id_seq")
     private Integer id;
 
     @Column(name = "nombre")
@@ -75,7 +83,4 @@ public class Estudiante {
                 + ", valorMatricula=" + valorMatricula + "]";
     }
 
-    
-    
-    
 }

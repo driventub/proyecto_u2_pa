@@ -45,7 +45,7 @@ public class PersonaTo {
 
     @Override
     public String toString() {
-        return "Persona [apellido=" + apellido + ", id=" + id + ", nombre=" + nombre + "]";
+        return "Estudiante [apellido=" + apellido + ", id=" + id + ", nombre=" + nombre + "]";
     }
 
 }
