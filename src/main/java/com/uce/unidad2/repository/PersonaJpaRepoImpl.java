@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,51 +47,81 @@ public class PersonaJpaRepoImpl implements IPersonaJpaRepo {
     @Override
     public Persona buscarCedula(String cedula) {
         Query jpqlQuery = this.entityManager.createQuery("SELECT p FROM Persona p WHERE p.cedula =:cedula")
-        .setParameter("cedula", cedula);
+                .setParameter("cedula", cedula);
         return (Persona) jpqlQuery.getSingleResult();
+    }
+
+    @Override
+    public Persona buscarCedulaTyped(String cedula) {
+        TypedQuery<Persona> myTypedQuery = this.entityManager
+                .createQuery("SELECT p FROM Persona p WHERE p.cedula =:cedula", Persona.class)
+                .setParameter("cedula", cedula);
+        return myTypedQuery.getSingleResult();
+
+    }
+
+    @Override
+    public Persona buscarCedulaNamed(String cedula) {
+        Query myQuery = this.entityManager.createNamedQuery("Persona.buscarPorCedula")
+                .setParameter("cedula", cedula);
+        return (Persona) myQuery.getSingleResult();
+    }
+
+    @Override
+    public Persona buscarCedulaTypedNamed(String cedula) {
+        TypedQuery<Persona> myQuery = this.entityManager.createNamedQuery("Persona.buscarPorCedula",Persona.class)
+                .setParameter("cedula", cedula);
+        return myQuery.getSingleResult();
     }
 
     @Override
     public List<Persona> buscarApellido(String apellido) {
         Query jpqlQuery = this.entityManager.createQuery("SELECT p FROM Persona p WHERE p.apellido =:apellido")
-        .setParameter("apellido", apellido);
+                .setParameter("apellido", apellido);
         return (List<Persona>) jpqlQuery.getResultList();
     }
 
     @Override
     public List<Persona> buscarGenero(String genero) {
         Query jpqlQuery = this.entityManager.createQuery("SELECT p FROM Persona p WHERE p.genero =:genero")
-        .setParameter("genero", genero);
+                .setParameter("genero", genero);
         return (List<Persona>) jpqlQuery.getResultList();
     }
 
     @Override
     public List<Persona> buscarNombre(String nombre) {
         Query jpqlQuery = this.entityManager.createQuery("SELECT p FROM Persona p WHERE p.nombre =:nombre")
-        .setParameter("nombre", nombre);
+                .setParameter("nombre", nombre);
         return (List<Persona>) jpqlQuery.getResultList();
+    }
+
+    @Override
+    public List<Persona> buscarNombreApellido(String nombre, String apellido) {
+        TypedQuery<Persona> myQuery = this.entityManager.createNamedQuery("Persona.buscarPorNombreApellido",Persona.class)
+                .setParameter("nombre", nombre)
+                .setParameter("apellido", apellido);
+        return myQuery.getResultList();
     }
 
     @Override
     public Integer actualizarPorApellido(String apellido, String genero) {
 
-        Query jpqlQuery = this.entityManager.createQuery("UPDATE Persona p SET p.genero =:genero  WHERE p.apellido =:apellido")
-        .setParameter("genero", genero)
-        .setParameter("apellido", apellido);
+        Query jpqlQuery = this.entityManager
+                .createQuery("UPDATE Persona p SET p.genero =:genero  WHERE p.apellido =:apellido")
+                .setParameter("genero", genero)
+                .setParameter("apellido", apellido);
         return jpqlQuery.executeUpdate();
-        
-        
+
     }
 
     @Override
     public Integer eliminarPorGenero(String genero) {
         Query jpqlQuery = this.entityManager.createQuery("DELETE Persona p WHERE p.genero =:genero ")
-        .setParameter("genero", genero);
-        
-        
+                .setParameter("genero", genero);
 
-        
         return jpqlQuery.executeUpdate();
     }
+
+    
 
 }

@@ -11,6 +11,8 @@ public interface IPersonaJpaService {
 
     public List<Persona> buscarNombre(String nombre);
 
+    public List<Persona> buscarNombreApellido(String nombre, String apellido);
+
     public Persona buscarId(Integer id);
 
     public void insertar(Persona p);
@@ -24,4 +26,10 @@ public interface IPersonaJpaService {
     public Integer actualizarPorApellido(String apellido, String genero);
 
     public Integer eliminarPorGenero(String genero);
+
+    public Persona buscarCedulaTyped(String cedula);
+
+    public Persona buscarCedulaTypedNamed(String cedula);
+
+    public Persona buscarCedulaNamed(String cedula);
 }
