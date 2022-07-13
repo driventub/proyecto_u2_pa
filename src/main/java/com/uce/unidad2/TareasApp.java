@@ -39,35 +39,35 @@ public class TareasApp implements CommandLineRunner{
 		// this.estudianteService.insertar(estudiante);
 		
 
-		logger.info("1");
-		List<Estudiante> lista1 = this.estudianteService.buscarValorTyped(new BigDecimal("21"));
-		for (Estudiante e : lista1) {
-			logger.info(e.toString());
-		}
+		// logger.info("1");
+		// List<Estudiante> lista1 = this.estudianteService.buscarValorTyped(new BigDecimal("21"));
+		// for (Estudiante e : lista1) {
+		// 	logger.info(e.toString());
+		// }
 
-		logger.info("2");
-		List<Estudiante> lista2 = this.estudianteService.buscarValorNamed(new BigDecimal("21"));
-		for (Estudiante e : lista2) {
-			logger.info(e.toString());
-		}
+		// logger.info("2");
+		// List<Estudiante> lista2 = this.estudianteService.buscarValorNamed(new BigDecimal("21"));
+		// for (Estudiante e : lista2) {
+		// 	logger.info(e.toString());
+		// }
 
-		logger.info("3");
-		List<Estudiante> lista3 = this.estudianteService.buscarValorTypedNamed(new BigDecimal("21"));
-		for (Estudiante e : lista3) {
-			logger.info(e.toString());
-		}
+		// logger.info("3");
+		// List<Estudiante> lista3 = this.estudianteService.buscarValorTypedNamed(new BigDecimal("21"));
+		// for (Estudiante e : lista3) {
+		// 	logger.info(e.toString());
+		// }
 
-		logger.info("4");
-		Estudiante estu1 = this.estudianteService.buscarEstudianteTyped("Pablo", "Rodriguez", "Matematica");
-		logger.info(estu1.toString());
+		// logger.info("4");
+		// Estudiante estu1 = this.estudianteService.buscarEstudianteTyped("Pablo", "Rodriguez", "Matematica");
+		// logger.info(estu1.toString());
 		
-		logger.info("5");
-		Estudiante estu2 = this.estudianteService.buscarEstudianteTyped("Pablo", "Rodriguez", "Matematica");
-		logger.info(estu2.toString());
+		// logger.info("5");
+		// Estudiante estu2 = this.estudianteService.buscarEstudianteTyped("Pablo", "Rodriguez", "Matematica");
+		// logger.info(estu2.toString());
 
-		logger.info("6");
-		Estudiante estu3 = this.estudianteService.buscarEstudianteTyped("Pablo", "Rodriguez", "Matematica");
-		logger.info(estu3.toString());
+		// logger.info("6");
+		// Estudiante estu3 = this.estudianteService.buscarEstudianteTyped("Pablo", "Rodriguez", "Matematica");
+		// logger.info(estu3.toString());
 		 
 	}
 

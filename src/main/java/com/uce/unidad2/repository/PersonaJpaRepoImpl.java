@@ -5,6 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,9 +72,24 @@ public class PersonaJpaRepoImpl implements IPersonaJpaRepo {
 
     @Override
     public Persona buscarCedulaTypedNamed(String cedula) {
-        TypedQuery<Persona> myQuery = this.entityManager.createNamedQuery("Persona.buscarPorCedula",Persona.class)
+        TypedQuery<Persona> myQuery = this.entityManager.createNamedQuery("Persona.buscarPorCedula", Persona.class)
                 .setParameter("cedula", cedula);
         return myQuery.getSingleResult();
+    }
+
+    @Override
+    public Persona buscarCedulaNative(String cedula) {
+        Query myQuery = this.entityManager
+                .createNativeQuery("SELECT * FROM persona WHERE pers_cedula = :cedula", Persona.class)
+                .setParameter("cedula", cedula);
+        return (Persona) myQuery.getSingleResult();
+    }
+
+    @Override
+    public Persona buscarCedulaNamedNative(String cedula) {
+        TypedQuery<Persona> myQuery = this.entityManager.createNamedQuery("Persona.buscarCedulaNative", Persona.class)
+                .setParameter("cedula", cedula);
+        return  myQuery.getSingleResult();
     }
 
     @Override
@@ -97,7 +115,8 @@ public class PersonaJpaRepoImpl implements IPersonaJpaRepo {
 
     @Override
     public List<Persona> buscarNombreApellido(String nombre, String apellido) {
-        TypedQuery<Persona> myQuery = this.entityManager.createNamedQuery("Persona.buscarPorNombreApellido",Persona.class)
+        TypedQuery<Persona> myQuery = this.entityManager
+                .createNamedQuery("Persona.buscarPorNombreApellido", Persona.class)
                 .setParameter("nombre", nombre)
                 .setParameter("apellido", apellido);
         return myQuery.getResultList();
@@ -122,6 +141,14 @@ public class PersonaJpaRepoImpl implements IPersonaJpaRepo {
         return jpqlQuery.executeUpdate();
     }
 
-    
+    @Override
+    public Persona buscarCedulaCriteriaAPI(String cedula) {
+        CriteriaBuilder myBuilder = this.entityManager.getCriteriaBuilder();
+
+        CriteriaQuery<Persona> myQuery = myBuilder.createQuery(Persona.class);
+        Root<Persona> personaRoot = myQuery.from(Persona.class);
+        TypedQuery<Persona> myQueryFinal = this.entityManager.createQuery(myQuery.select(personaRoot).where(myBuilder.equal(personaRoot.get("cedula"), cedula)));
+        return myQueryFinal.getSingleResult();
+    }
 
 }

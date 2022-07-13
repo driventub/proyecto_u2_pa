@@ -32,4 +32,8 @@ public interface IPersonaJpaService {
     public Persona buscarCedulaTypedNamed(String cedula);
 
     public Persona buscarCedulaNamed(String cedula);
+
+    public Persona buscarCedulaNative(String cedula);
+
+    public Persona buscarCedulaNamedNative(String cedula);
 }

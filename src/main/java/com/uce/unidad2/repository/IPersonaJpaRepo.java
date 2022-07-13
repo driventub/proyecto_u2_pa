@@ -28,6 +28,13 @@ public interface IPersonaJpaRepo {
     public Persona buscarCedulaTypedNamed(String cedula);
 
     public Persona buscarCedulaNamed(String cedula);
+    
+    
+    public Persona buscarCedulaNative(String cedula);
+
+    public Persona buscarCedulaNamedNative(String cedula);
+
+    public Persona buscarCedulaCriteriaAPI(String cedula);
 
     public Integer actualizarPorApellido(String apellido, String genero);
 
