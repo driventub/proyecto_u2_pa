@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -15,24 +17,27 @@ import javax.persistence.Table;
 @Table(name = "estudiante")
 @NamedQuery(name = "Estudiante.buscarValor", query = "SELECT e FROM Estudiante e WHERE e.valorMatricula >=:valor ORDER BY e.apellido ")
 @NamedQuery(name = "Estudiante.buscarEstudiante", query = "SELECT e FROM Estudiante e WHERE e.nombre =:nombre AND e.apellido=:apellido AND e.curso=:curso")
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "Estudiante.buscarValorNative", query = "SELECT * FROM estudiante WHERE estu_val_matricula >=:valor ORDER BY estu_apellido",resultClass = Estudiante.class),
+        @NamedNativeQuery(name = "Estudiante.buscarEstudianteNative", query = "SELECT * FROM estudiante WHERE estu_nombre =:nombre AND estu_apellido=:apellido AND estu_curso=:curso", resultClass =Estudiante.class) })
 
 public class Estudiante {
     @Id
-    @Column(name = "id")
+    @Column(name = "estu_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estu_id_seq")
     @SequenceGenerator(name = "estu_id_seq", sequenceName = "estu_id_seq")
     private Integer id;
 
-    @Column(name = "nombre")
+    @Column(name = "estu_nombre")
     private String nombre;
 
-    @Column(name = "apellido")
+    @Column(name = "estu_apellido")
     private String apellido;
 
-    @Column(name = "curso")
+    @Column(name = "estu_curso")
     private String curso;
 
-    @Column(name = "valor_matricula")
+    @Column(name = "estu_val_matricula")
     private BigDecimal valorMatricula;
 
     // Set y Get

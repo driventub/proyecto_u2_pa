@@ -30,45 +30,38 @@ public class TareasApp implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		
-		Estudiante estudiante = new Estudiante();
-			estudiante.setNombre("Pablo");
-			estudiante.setApellido("Rodriguez");
-			estudiante.setCurso("Fisica");
-			estudiante.setValorMatricula(new BigDecimal("30.00"));
+		// Estudiante estudiante = new Estudiante();
+		// 	estudiante.setNombre("Armando");
+		// 	estudiante.setApellido("Mendoza");
+		// 	estudiante.setCurso("Quimica");
+		// 	estudiante.setValorMatricula(new BigDecimal("80.33"));
 
 		// this.estudianteService.insertar(estudiante);
 		
 
-		// logger.info("1");
-		// List<Estudiante> lista1 = this.estudianteService.buscarValorTyped(new BigDecimal("21"));
-		// for (Estudiante e : lista1) {
-		// 	logger.info(e.toString());
-		// }
+		logger.info("1");
+		List<Estudiante> lista1 = this.estudianteService.buscarValorNative(new BigDecimal("21"));
+		for (Estudiante e : lista1) {
+			logger.info(e.toString());
+		}
 
-		// logger.info("2");
-		// List<Estudiante> lista2 = this.estudianteService.buscarValorNamed(new BigDecimal("21"));
-		// for (Estudiante e : lista2) {
-		// 	logger.info(e.toString());
-		// }
+		logger.info("2");
+		List<Estudiante> lista2 = this.estudianteService.buscarValorNativeNamed(new BigDecimal("21"));
+		for (Estudiante e : lista2) {
+			logger.info(e.toString());
+		}
 
-		// logger.info("3");
-		// List<Estudiante> lista3 = this.estudianteService.buscarValorTypedNamed(new BigDecimal("21"));
-		// for (Estudiante e : lista3) {
-		// 	logger.info(e.toString());
-		// }
-
-		// logger.info("4");
-		// Estudiante estu1 = this.estudianteService.buscarEstudianteTyped("Pablo", "Rodriguez", "Matematica");
-		// logger.info(estu1.toString());
 		
-		// logger.info("5");
-		// Estudiante estu2 = this.estudianteService.buscarEstudianteTyped("Pablo", "Rodriguez", "Matematica");
-		// logger.info(estu2.toString());
 
-		// logger.info("6");
-		// Estudiante estu3 = this.estudianteService.buscarEstudianteTyped("Pablo", "Rodriguez", "Matematica");
-		// logger.info(estu3.toString());
-		 
+		logger.info("3");
+		Estudiante estu1 = this.estudianteService.buscarEstudianteNative("Pablo", "Rodriguez", "Matematica");
+		logger.info(estu1.toString());
+		
+		logger.info("4");
+		Estudiante estu2 = this.estudianteService.buscarEstudianteNativeNamed("Pablo", "Rodriguez", "Matematica");
+		logger.info(estu2.toString());
+
+		
 	}
 
 }

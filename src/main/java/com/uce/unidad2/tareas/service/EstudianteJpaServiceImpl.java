@@ -81,4 +81,28 @@ public class EstudianteJpaServiceImpl implements IEstudianteJpaService {
         return this.estu.buscarEstudianteTypedNamed(nombre, apellido, curso);
     }
 
+    @Override
+    public List<Estudiante> buscarValorNative(BigDecimal valor) {
+        // TODO Auto-generated method stub
+        return this.estu.buscarValorNative(valor);
+    }
+
+    @Override
+    public List<Estudiante> buscarValorNativeNamed(BigDecimal valor) {
+        // TODO Auto-generated method stub
+        return this.estu.buscarValorNativeNamed(valor);
+    }
+
+    @Override
+    public Estudiante buscarEstudianteNative(String nombre, String apellido, String curso) {
+        // TODO Auto-generated method stub
+        return this.estu.buscarEstudianteNative(nombre, apellido, curso);
+    }
+
+    @Override
+    public Estudiante buscarEstudianteNativeNamed(String nombre, String apellido, String curso) {
+        // TODO Auto-generated method stub
+        return this.estu.buscarEstudianteNativeNamed(nombre, apellido, curso);
+    }
+
 }

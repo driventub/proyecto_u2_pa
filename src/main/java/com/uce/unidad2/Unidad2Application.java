@@ -32,8 +32,8 @@ public class Unidad2Application implements CommandLineRunner {
 		
 		// this.personaJpaService.insertar(persona);
 		
-		logger.info(this.personaJpaService.buscarCedulaNamed("123477548-3").toString());
-		logger.info(this.personaJpaService.buscarCedulaNamedNative("123477548-3").toString());
+		// logger.info(this.personaJpaService.buscarCedulaNamed("123477548-3").toString());
+		// logger.info(this.personaJpaService.buscarCedulaNamedNative("123477548-3").toString());
 
 	
 

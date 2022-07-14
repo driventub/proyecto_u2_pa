@@ -7,24 +7,22 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "estudiante")
+
 
 public class EstudianteJdbc {
-    @Id
-    @Column(name = "id")
+   
     private Integer id;
 
-    @Column(name = "nombre")
+   
     private String nombre;
 
-    @Column(name = "apellido")
+    
     private String apellido;
 
-    @Column(name = "curso")
+    
     private String curso;
 
-    @Column(name = "valor_matricula")
+    
     private BigDecimal valorMatricula;
 
     

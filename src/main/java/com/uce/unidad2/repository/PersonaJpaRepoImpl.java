@@ -89,7 +89,7 @@ public class PersonaJpaRepoImpl implements IPersonaJpaRepo {
     public Persona buscarCedulaNamedNative(String cedula) {
         TypedQuery<Persona> myQuery = this.entityManager.createNamedQuery("Persona.buscarCedulaNative", Persona.class)
                 .setParameter("cedula", cedula);
-        return  myQuery.getSingleResult();
+        return myQuery.getSingleResult();
     }
 
     @Override
@@ -147,7 +147,8 @@ public class PersonaJpaRepoImpl implements IPersonaJpaRepo {
 
         CriteriaQuery<Persona> myQuery = myBuilder.createQuery(Persona.class);
         Root<Persona> personaRoot = myQuery.from(Persona.class);
-        TypedQuery<Persona> myQueryFinal = this.entityManager.createQuery(myQuery.select(personaRoot).where(myBuilder.equal(personaRoot.get("cedula"), cedula)));
+        TypedQuery<Persona> myQueryFinal = this.entityManager
+                .createQuery(myQuery.select(personaRoot).where(myBuilder.equal(personaRoot.get("cedula"), cedula)));
         return myQueryFinal.getSingleResult();
     }
 

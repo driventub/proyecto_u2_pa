@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.uce.unidad2.repository.modelo.Persona;
 import com.uce.unidad2.tareas.repository.modelo.Estudiante;
 
 @Repository
@@ -28,8 +29,8 @@ public class EstudianteJpaRepoImpl implements IEstudianteJpaRepo {
     @Override
     public List<Estudiante> buscarTodos() {
         TypedQuery<Estudiante> myTypedQuery = this.e
-        .createQuery("SELECT e FROM Estudiante e ",
-                Estudiante.class);
+                .createQuery("SELECT e FROM Estudiante e ",
+                        Estudiante.class);
         return myTypedQuery.getResultList();
 
     }
@@ -81,7 +82,8 @@ public class EstudianteJpaRepoImpl implements IEstudianteJpaRepo {
     @Override
     public Estudiante buscarEstudianteTyped(String nombre, String apellido, String curso) {
         TypedQuery<Estudiante> myTypedQuery = this.e
-                .createQuery("SELECT e FROM Estudiante e WHERE e.nombre =:nombre AND e.apellido=:apellido AND e.curso=:curso",
+                .createQuery(
+                        "SELECT e FROM Estudiante e WHERE e.nombre =:nombre AND e.apellido=:apellido AND e.curso=:curso",
                         Estudiante.class)
                 .setParameter("curso", curso)
                 .setParameter("nombre", nombre)
@@ -107,6 +109,44 @@ public class EstudianteJpaRepoImpl implements IEstudianteJpaRepo {
                 .setParameter("nombre", nombre)
                 .setParameter("apellido", apellido);
         return myTypedQuery.getSingleResult();
+    }
+
+    @Override
+    public List<Estudiante> buscarValorNative(BigDecimal valor) {
+        Query myQuery = this.e
+                .createNativeQuery(
+                        "SELECT * FROM estudiante WHERE estu_val_matricula >=:valor ORDER BY estu_apellido",
+                        Estudiante.class)
+                .setParameter("valor", valor);
+        return (List<Estudiante>) myQuery.getResultList();
+    }
+
+    @Override
+    public List<Estudiante> buscarValorNativeNamed(BigDecimal valor) {
+        TypedQuery<Estudiante> myQuery = this.e.createNamedQuery("Estudiante.buscarValorNative", Estudiante.class)
+                .setParameter("valor", valor);
+        return myQuery.getResultList();
+    }
+
+    @Override
+    public Estudiante buscarEstudianteNative(String nombre, String apellido, String curso) {
+        Query myQuery = this.e
+                .createNativeQuery(
+                        "SELECT * FROM estudiante WHERE estu_nombre =:nombre AND estu_apellido=:apellido AND estu_curso=:curso",
+                        Estudiante.class)
+                .setParameter("curso", curso)
+                .setParameter("nombre", nombre)
+                .setParameter("apellido", apellido);
+        return (Estudiante) myQuery.getSingleResult();
+    }
+
+    @Override
+    public Estudiante buscarEstudianteNativeNamed(String nombre, String apellido, String curso) {
+        TypedQuery<Estudiante> myQuery = this.e.createNamedQuery("Estudiante.buscarEstudianteNative", Estudiante.class)
+                .setParameter("curso", curso)
+                .setParameter("nombre", nombre)
+                .setParameter("apellido", apellido);
+        return myQuery.getSingleResult();
     }
 
 }

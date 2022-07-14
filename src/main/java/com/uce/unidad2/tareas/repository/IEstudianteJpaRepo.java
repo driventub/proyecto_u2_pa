@@ -19,17 +19,21 @@ public interface IEstudianteJpaRepo {
 	public List<Estudiante> buscarValorTyped(BigDecimal valor);
 
 	public List<Estudiante> buscarValorNamed(BigDecimal valor);
-	
+
+	public List<Estudiante> buscarValorNative(BigDecimal valor);
+
+	public List<Estudiante> buscarValorNativeNamed(BigDecimal valor);
+
 	public List<Estudiante> buscarValorTypedNamed(BigDecimal valor);
 
+	public Estudiante buscarEstudianteTyped(String nombre, String apellido, String curso);
 
-	public Estudiante buscarEstudianteTyped(String nombre, String apellido, String curso );
-	
-	public Estudiante buscarEstudianteNamed(String nombre, String apellido, String curso );
+	public Estudiante buscarEstudianteNamed(String nombre, String apellido, String curso);
 
-	public Estudiante buscarEstudianteTypedNamed(String nombre, String apellido, String curso );
+	public Estudiante buscarEstudianteNative(String nombre, String apellido, String curso);
 
+	public Estudiante buscarEstudianteNativeNamed(String nombre, String apellido, String curso);
 
-	
+	public Estudiante buscarEstudianteTypedNamed(String nombre, String apellido, String curso);
 
 }
