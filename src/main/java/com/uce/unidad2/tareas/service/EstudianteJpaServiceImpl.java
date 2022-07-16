@@ -47,62 +47,74 @@ public class EstudianteJpaServiceImpl implements IEstudianteJpaService {
 
     @Override
     public List<Estudiante> buscarValorTyped(BigDecimal valor) {
-        // TODO Auto-generated method stub
+        
         return this.estu.buscarValorTyped(valor);
     }
 
     @Override
     public List<Estudiante> buscarValorNamed(BigDecimal valor) {
-        // TODO Auto-generated method stub
+        
         return this.estu.buscarValorNamed(valor);
     }
 
     @Override
     public List<Estudiante> buscarValorTypedNamed(BigDecimal valor) {
-        // TODO Auto-generated method stub
+        
         return this.estu.buscarValorTypedNamed(valor);
     }
 
     @Override
     public Estudiante buscarEstudianteTyped(String nombre, String apellido, String curso) {
-        // TODO Auto-generated method stub
+        
         return this.estu.buscarEstudianteTyped(nombre, apellido, curso);
     }
 
     @Override
     public Estudiante buscarEstudianteNamed(String nombre, String apellido, String curso) {
-        // TODO Auto-generated method stub
+        
         return this.estu.buscarEstudianteNamed(nombre, apellido, curso);
     }
 
     @Override
     public Estudiante buscarEstudianteTypedNamed(String nombre, String apellido, String curso) {
-        // TODO Auto-generated method stub
+        
         return this.estu.buscarEstudianteTypedNamed(nombre, apellido, curso);
     }
 
     @Override
     public List<Estudiante> buscarValorNative(BigDecimal valor) {
-        // TODO Auto-generated method stub
+        
         return this.estu.buscarValorNative(valor);
     }
 
     @Override
     public List<Estudiante> buscarValorNativeNamed(BigDecimal valor) {
-        // TODO Auto-generated method stub
+        
         return this.estu.buscarValorNativeNamed(valor);
     }
 
     @Override
     public Estudiante buscarEstudianteNative(String nombre, String apellido, String curso) {
-        // TODO Auto-generated method stub
+        
         return this.estu.buscarEstudianteNative(nombre, apellido, curso);
     }
 
     @Override
     public Estudiante buscarEstudianteNativeNamed(String nombre, String apellido, String curso) {
-        // TODO Auto-generated method stub
+        
         return this.estu.buscarEstudianteNativeNamed(nombre, apellido, curso);
+    }
+
+    @Override
+    public Estudiante buscarEstudianteCriteriaAPI(String nombre, String apellido, String curso) {
+        
+        return this.estu.buscarEstudianteCriteriaAPI(nombre, apellido, curso);
+    }
+
+    @Override
+    public List<Estudiante> buscarValorCriteriaAPI(BigDecimal valor) {
+        
+        return this.estu.buscarValorCriteriaAPI(valor);
     }
 
 }

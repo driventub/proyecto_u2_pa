@@ -26,6 +26,8 @@ public interface IEstudianteJpaRepo {
 
 	public List<Estudiante> buscarValorTypedNamed(BigDecimal valor);
 
+	public List<Estudiante> buscarValorCriteriaAPI(BigDecimal valor);
+
 	public Estudiante buscarEstudianteTyped(String nombre, String apellido, String curso);
 
 	public Estudiante buscarEstudianteNamed(String nombre, String apellido, String curso);
@@ -35,5 +37,7 @@ public interface IEstudianteJpaRepo {
 	public Estudiante buscarEstudianteNativeNamed(String nombre, String apellido, String curso);
 
 	public Estudiante buscarEstudianteTypedNamed(String nombre, String apellido, String curso);
+
+	public Estudiante buscarEstudianteCriteriaAPI(String nombre, String apellido, String curso);
 
 }

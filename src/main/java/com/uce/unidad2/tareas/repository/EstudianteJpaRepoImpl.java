@@ -7,11 +7,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import com.uce.unidad2.repository.modelo.Persona;
 import com.uce.unidad2.tareas.repository.modelo.Estudiante;
 
 @Repository
@@ -147,6 +150,44 @@ public class EstudianteJpaRepoImpl implements IEstudianteJpaRepo {
                 .setParameter("nombre", nombre)
                 .setParameter("apellido", apellido);
         return myQuery.getSingleResult();
+    }
+
+    @Override
+    public List<Estudiante> buscarValorCriteriaAPI(BigDecimal valor) {
+        CriteriaBuilder myBuilder = this.e.getCriteriaBuilder();
+
+        CriteriaQuery<Estudiante> myQuery = myBuilder.createQuery(Estudiante.class);
+
+        Root<Estudiante> estuFrom = myQuery.from(Estudiante.class);
+
+        Predicate eValor = myBuilder.greaterThan(estuFrom.get("valorMatricula"), valor);
+
+        CriteriaQuery<Estudiante> eCompleta = myQuery.select(estuFrom).where(eValor);
+
+        TypedQuery<Estudiante> estuFinal = this.e.createQuery(eCompleta);
+
+        return estuFinal.getResultList();
+    }
+
+    @Override
+    public Estudiante buscarEstudianteCriteriaAPI(String nombre, String apellido, String curso) {
+        CriteriaBuilder myBuilder = this.e.getCriteriaBuilder();
+
+        CriteriaQuery<Estudiante> myQuery = myBuilder.createQuery(Estudiante.class);
+
+        Root<Estudiante> estuFrom = myQuery.from(Estudiante.class);
+
+        Predicate eNombre = myBuilder.equal(estuFrom.get("nombre"), nombre);
+        Predicate eApellido = myBuilder.equal(estuFrom.get("apellido"), apellido);
+        Predicate eCurso = myBuilder.equal(estuFrom.get("curso"), curso);
+
+        Predicate eAnd = myBuilder.and(eNombre, eApellido, eCurso);
+
+        CriteriaQuery<Estudiante> eCompleta = myQuery.select(estuFrom).where(eAnd);
+
+        TypedQuery<Estudiante> estuFinal = this.e.createQuery(eCompleta);
+
+        return estuFinal.getSingleResult();
     }
 
 }

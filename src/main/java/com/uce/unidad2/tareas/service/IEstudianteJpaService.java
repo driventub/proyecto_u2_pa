@@ -36,4 +36,8 @@ public interface IEstudianteJpaService {
 
 	public Estudiante buscarEstudianteTypedNamed(String nombre, String apellido, String curso);
 
+	public Estudiante buscarEstudianteCriteriaAPI(String nombre, String apellido, String curso);
+
+    public List<Estudiante> buscarValorCriteriaAPI(BigDecimal valor);
+
 }

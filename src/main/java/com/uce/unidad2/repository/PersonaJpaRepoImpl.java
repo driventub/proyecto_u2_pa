@@ -172,16 +172,15 @@ public class PersonaJpaRepoImpl implements IPersonaJpaRepo {
 
         Predicate pNombre = myBuilder.equal(personaFrom.get("nombre"), nombre);
         Predicate pApellido = myBuilder.equal(personaFrom.get("apellido"), apellido);
-        
+
         Predicate pAnd = myBuilder.and(pNombre, pApellido);
         Predicate pOr = myBuilder.or(pNombre, pApellido);
         CriteriaQuery<Persona> myQueryCompleto;
 
-        
         if (genero.equals("Masculino")) {
-             myQueryCompleto = myQuery.select(personaFrom).where(pAnd);
+            myQueryCompleto = myQuery.select(personaFrom).where(pAnd);
         } else {
-             myQueryCompleto = myQuery.select(personaFrom).where(pOr);
+            myQueryCompleto = myQuery.select(personaFrom).where(pOr);
         }
 
         TypedQuery<Persona> myQueryFinal = this.entityManager.createQuery(myQueryCompleto);
@@ -200,16 +199,15 @@ public class PersonaJpaRepoImpl implements IPersonaJpaRepo {
         Predicate pNombre = myBuilder.equal(personaFrom.get("nombre"), nombre);
         Predicate pApellido = myBuilder.equal(personaFrom.get("apellido"), apellido);
         Predicate pGenero = myBuilder.equal(personaFrom.get("genero"), genero);
-        
+
         Predicate pOr = myBuilder.or(pNombre, pApellido);
         Predicate PFinal = myBuilder.and(pOr, pGenero);
         CriteriaQuery<Persona> myQueryCompleto;
-        
-        
+
         if (genero.equals("Masculino")) {
-             myQueryCompleto = myQuery.select(personaFrom).where(PFinal);
+            myQueryCompleto = myQuery.select(personaFrom).where(PFinal);
         } else {
-             myQueryCompleto = myQuery.select(personaFrom).where(pOr);
+            myQueryCompleto = myQuery.select(personaFrom).where(pOr);
         }
 
         TypedQuery<Persona> myQueryFinal = this.entityManager.createQuery(myQueryCompleto);

@@ -35,11 +35,11 @@ public class Unidad2Application implements CommandLineRunner {
 	
 		
 		
-		logger.info(this.personaJpaService.buscarCedulaCriteriaAPI("123477548-3").toString());
+		// logger.info(this.personaJpaService.buscarCedulaCriteriaAPI("123477548-3").toString());
 		
-		logger.info(this.personaJpaService.buscarDinamica("Gabriela", "Alvarez", "Femenino").toString());
+		// logger.info(this.personaJpaService.buscarDinamica("Gabriela", "Alvarez", "Femenino").toString());
 		
-		logger.info(this.personaJpaService.buscarDinamicaPredicado("Gabriela", "Alvarez", "Femenino").toString());
+		// logger.info(this.personaJpaService.buscarDinamicaPredicado("Gabriela", "Alvarez", "Femenino").toString());
 
 
 
