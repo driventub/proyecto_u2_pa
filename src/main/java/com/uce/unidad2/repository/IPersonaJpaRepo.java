@@ -40,4 +40,8 @@ public interface IPersonaJpaRepo {
 
     public Integer eliminarPorGenero(String genero);
 
+    public Persona buscarDinamica(String nombre, String apellido, String genero);
+
+    public Persona buscarDinamicaPred(String nombre, String apellido, String genero);
+
 }

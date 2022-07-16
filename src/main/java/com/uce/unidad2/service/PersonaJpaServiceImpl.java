@@ -16,102 +16,116 @@ public class PersonaJpaServiceImpl implements IPersonaJpaService {
 
     @Override
     public Persona buscarId(Integer id) {
-        // TODO Auto-generated method stub
+
         return this.jpaRepo.buscarId(id);
     }
 
     @Override
     public void insertar(Persona p) {
         this.jpaRepo.insertar(p);
-        
+
     }
 
     @Override
     public void actualizar(Persona p) {
         this.jpaRepo.actualizar(p);
-        
+
     }
 
     @Override
     public void eliminar(Integer id) {
         this.jpaRepo.eliminar(id);
-        
+
     }
 
     @Override
     public Persona buscarCedula(String cedula) {
-        
+
         return this.jpaRepo.buscarCedula(cedula);
     }
 
     @Override
     public List<Persona> buscarGenero(String genero) {
-        
+
         return this.jpaRepo.buscarGenero(genero);
     }
 
     @Override
     public List<Persona> buscarApellido(String apellido) {
-        
+
         return this.jpaRepo.buscarApellido(apellido);
     }
 
     @Override
     public List<Persona> buscarNombre(String nombre) {
-        
+
         return this.jpaRepo.buscarApellido(nombre);
     }
 
     @Override
     public Integer actualizarPorApellido(String apellido, String genero) {
-        
+
         return this.jpaRepo.actualizarPorApellido(apellido, genero);
     }
 
     @Override
     public Integer eliminarPorGenero(String genero) {
-        
+
         return this.jpaRepo.eliminarPorGenero(genero);
     }
 
     @Override
     public Persona buscarCedulaTyped(String cedula) {
-        // TODO Auto-generated method stub
+
         return this.jpaRepo.buscarCedulaTyped(cedula);
     }
 
     @Override
     public Persona buscarCedulaNamed(String cedula) {
-        // TODO Auto-generated method stub
+
         return this.jpaRepo.buscarCedulaNamed(cedula);
     }
 
     @Override
     public Persona buscarCedulaNative(String cedula) {
-        // TODO Auto-generated method stub
+
         return this.jpaRepo.buscarCedulaNative(cedula);
     }
 
     @Override
     public Persona buscarCedulaTypedNamed(String cedula) {
-        // TODO Auto-generated method stub
+
         return this.jpaRepo.buscarCedulaTypedNamed(cedula);
     }
 
     @Override
     public List<Persona> buscarNombreApellido(String nombre, String apellido) {
-        // TODO Auto-generated method stub
+
         return this.jpaRepo.buscarNombreApellido(nombre, apellido);
     }
 
     @Override
     public Persona buscarCedulaNamedNative(String cedula) {
-        // TODO Auto-generated method stub
+
         return this.jpaRepo.buscarCedulaNamedNative(cedula);
     }
 
-    
+    @Override
+    public Persona buscarCedulaCriteriaAPI(String cedula) {
 
-   
-    
+        return this.jpaRepo.buscarCedulaCriteriaAPI(cedula);
+    }
+
+    @Override
+    public Persona buscarDinamica(String nombre, String apellido, String genero) {
+
+        return this.jpaRepo.buscarDinamica(nombre, apellido, genero);
+    }
+
+    @Override
+    public Persona buscarDinamicaPredicado(String nombre, String apellido, String genero) {
+
+        return this.jpaRepo.buscarDinamicaPred(nombre, apellido, genero);
+    }
+
 }

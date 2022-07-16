@@ -25,15 +25,23 @@ public class Unidad2Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Persona persona = new Persona();
-		persona.setNombre("Daniel");
-		persona.setApellido("Pozo");
+		persona.setNombre("Alberto");
+		persona.setApellido("Villa");
 		persona.setGenero("Masculino");
-		persona.setCedula("123477548-3");
+		persona.setCedula("123477543-9");
 		
 		// this.personaJpaService.insertar(persona);
 		
-		// logger.info(this.personaJpaService.buscarCedulaNamed("123477548-3").toString());
-		// logger.info(this.personaJpaService.buscarCedulaNamedNative("123477548-3").toString());
+	
+		
+		
+		logger.info(this.personaJpaService.buscarCedulaCriteriaAPI("123477548-3").toString());
+		
+		logger.info(this.personaJpaService.buscarDinamica("Gabriela", "Alvarez", "Femenino").toString());
+		
+		logger.info(this.personaJpaService.buscarDinamicaPredicado("Gabriela", "Alvarez", "Femenino").toString());
+
+
 
 	
 
