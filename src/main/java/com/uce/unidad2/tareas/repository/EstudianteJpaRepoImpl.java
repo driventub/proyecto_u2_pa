@@ -16,6 +16,8 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.uce.unidad2.tareas.repository.modelo.Estudiante;
+import com.uce.unidad2.tareas.repository.modelo.EstudianteContarMateria;
+import com.uce.unidad2.tareas.repository.modelo.EstudianteSencillo;
 
 @Repository
 @Transactional
@@ -188,6 +190,22 @@ public class EstudianteJpaRepoImpl implements IEstudianteJpaRepo {
         TypedQuery<Estudiante> estuFinal = this.e.createQuery(eCompleta);
 
         return estuFinal.getSingleResult();
+    }
+
+    @Override
+    public List<EstudianteSencillo> buscarValorSencillo(BigDecimal valor) {
+        TypedQuery<EstudianteSencillo> mQuery = this.e.createQuery(
+                "SELECT NEW com.uce.unidad2.tareas.repository.modelo.EstudianteSencillo(e.apellido, e.valorMatricula) FROM Estudiante e WHERE e.valorMatricula>= :valor ORDER BY e.valorMatricula DESC",
+                EstudianteSencillo.class).setParameter("valor", valor);
+        return mQuery.getResultList();
+    }
+
+    @Override
+    public EstudianteContarMateria buscarCantidadEstudiantesSencillo(String curso) {
+        TypedQuery<EstudianteContarMateria> mQuery = this.e.createQuery(
+                "SELECT NEW com.uce.unidad2.tareas.repository.modelo.EstudianteContarMateria(e.curso, COUNT(e.curso)) FROM Estudiante e WHERE e.curso = :curso GROUP BY e.curso  ",
+                EstudianteContarMateria.class).setParameter("curso", curso);
+        return mQuery.getSingleResult();
     }
 
 }

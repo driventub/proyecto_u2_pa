@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.uce.unidad2.tareas.repository.modelo.Estudiante;
+import com.uce.unidad2.tareas.repository.modelo.EstudianteContarMateria;
+import com.uce.unidad2.tareas.repository.modelo.EstudianteSencillo;
 
 public interface IEstudianteJpaRepo {
 	public Estudiante buscar(Integer id);
@@ -39,5 +41,9 @@ public interface IEstudianteJpaRepo {
 	public Estudiante buscarEstudianteTypedNamed(String nombre, String apellido, String curso);
 
 	public Estudiante buscarEstudianteCriteriaAPI(String nombre, String apellido, String curso);
+
+	public List<EstudianteSencillo> buscarValorSencillo(BigDecimal valor);
+
+	public EstudianteContarMateria buscarCantidadEstudiantesSencillo(String curso);
 
 }

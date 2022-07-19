@@ -11,6 +11,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.uce.unidad2.tareas.repository.modelo.Estudiante;
+import com.uce.unidad2.tareas.repository.modelo.EstudianteContarMateria;
+import com.uce.unidad2.tareas.repository.modelo.EstudianteSencillo;
 import com.uce.unidad2.tareas.service.IEstudianteJpaService;
 
 @SpringBootApplication
@@ -30,25 +32,21 @@ public class TareasApp implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		
-		// Estudiante estudiante = new Estudiante();
-		// 	estudiante.setNombre("Armando");
-		// 	estudiante.setApellido("Mendoza");
-		// 	estudiante.setCurso("Quimica");
-		// 	estudiante.setValorMatricula(new BigDecimal("80.33"));
+		Estudiante estudiante = new Estudiante();
+			estudiante.setNombre("Jessica");
+			estudiante.setApellido("Simba");
+			estudiante.setCurso("Matematica");
+			estudiante.setValorMatricula(new BigDecimal("88.88"));
 
 		// this.estudianteService.insertar(estudiante);
 		
-
+		List<EstudianteSencillo> e1 = this.estudianteService.buscarValorSencillo(new BigDecimal("51.00"));
+		for (EstudianteSencillo estudianteSencillo : e1) {
+			logger.info(estudianteSencillo.toString());
+		}
 		
-		// List<Estudiante> lista1 = this.estudianteService.buscarValorCriteriaAPI(new BigDecimal("21"));
-		// for (Estudiante e : lista1) {
-		// 	logger.info(e.toString());
-		// }
-
-		
-		// Estudiante e1 = this.estudianteService.buscarEstudianteCriteriaAPI("Armando", "Mendoza", "Quimica");
-		// logger.info(e1.toString());
-		
+		EstudianteContarMateria e2 = this.estudianteService.buscarCantidadEstudiantesSencillo("Quimica");
+		logger.info(e2.toString());
 		
 
 		

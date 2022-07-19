@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.uce.unidad2.tareas.repository.IEstudianteJpaRepo;
 import com.uce.unidad2.tareas.repository.modelo.Estudiante;
+import com.uce.unidad2.tareas.repository.modelo.EstudianteContarMateria;
+import com.uce.unidad2.tareas.repository.modelo.EstudianteSencillo;
 
 @Service
 public class EstudianteJpaServiceImpl implements IEstudianteJpaService {
@@ -115,6 +117,18 @@ public class EstudianteJpaServiceImpl implements IEstudianteJpaService {
     public List<Estudiante> buscarValorCriteriaAPI(BigDecimal valor) {
         
         return this.estu.buscarValorCriteriaAPI(valor);
+    }
+
+    @Override
+    public List<EstudianteSencillo> buscarValorSencillo(BigDecimal valor) {
+        // TODO Auto-generated method stub
+        return this.estu.buscarValorSencillo(valor);
+    }
+
+    @Override
+    public EstudianteContarMateria buscarCantidadEstudiantesSencillo(String curso) {
+        // TODO Auto-generated method stub
+        return this.estu.buscarCantidadEstudiantesSencillo(curso);
     }
 
 }

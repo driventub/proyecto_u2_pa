@@ -29,17 +29,17 @@ public class Unidad2Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		List<PersonaSencilla> listaP = this.personaJpaService.buscarApellidoSencilla("Bolaños");
+		// List<PersonaSencilla> listaP = this.personaJpaService.buscarApellidoSencilla("Bolaños");
 
-		for (PersonaSencilla p : listaP) {
-			logger.info(p.toString());
-		}
+		// for (PersonaSencilla p : listaP) {
+		// 	logger.info(p.toString());
+		// }
 
-		List<PersonaContadorGenero> listaGenero = this.personaJpaService.contarGenero();
+		// List<PersonaContadorGenero> listaGenero = this.personaJpaService.contarGenero();
 
-		for (PersonaContadorGenero p : listaGenero) {
-			logger.info(p.toString());
-		}
+		// for (PersonaContadorGenero p : listaGenero) {
+		// 	logger.info(p.toString());
+		// }
 
 	
 
