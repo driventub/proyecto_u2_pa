@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.uce.unidad2.repository.modelo.Persona;
+import com.uce.unidad2.repository.modelo.PersonaContadorGenero;
+import com.uce.unidad2.repository.modelo.PersonaSencilla;
 
 @Repository
 @Transactional
@@ -98,6 +100,16 @@ public class PersonaJpaRepoImpl implements IPersonaJpaRepo {
         Query jpqlQuery = this.entityManager.createQuery("SELECT p FROM Persona p WHERE p.apellido =:apellido")
                 .setParameter("apellido", apellido);
         return (List<Persona>) jpqlQuery.getResultList();
+    }
+
+    @Override
+    public List<PersonaSencilla> buscarApellidoSencilla(String apellido) {
+        TypedQuery<PersonaSencilla> mTypedQuery = this.entityManager.createQuery(
+                "SELECT NEW com.uce.unidad2.repository.modelo.PersonaSencilla(p.nombre, p.apellido) FROM Persona p WHERE p.apellido=:apellido",
+                PersonaSencilla.class)
+                .setParameter("apellido", apellido);
+
+        return mTypedQuery.getResultList();
     }
 
     @Override
@@ -213,6 +225,16 @@ public class PersonaJpaRepoImpl implements IPersonaJpaRepo {
         TypedQuery<Persona> myQueryFinal = this.entityManager.createQuery(myQueryCompleto);
 
         return myQueryFinal.getSingleResult();
+    }
+
+    @Override
+    public List<PersonaContadorGenero> contarGenero() {
+        TypedQuery<PersonaContadorGenero> mTypedQuery = this.entityManager.createQuery(
+                "SELECT NEW com.uce.unidad2.repository.modelo.PersonaContadorGenero(p.genero, COUNT(p.genero)) FROM Persona p GROUP BY p.genero",
+                PersonaContadorGenero.class);
+
+        return mTypedQuery.getResultList();
+
     }
 
 }

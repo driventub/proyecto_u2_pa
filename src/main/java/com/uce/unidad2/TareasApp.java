@@ -40,14 +40,15 @@ public class TareasApp implements CommandLineRunner{
 		
 
 		
-		List<Estudiante> lista1 = this.estudianteService.buscarValorCriteriaAPI(new BigDecimal("21"));
-		for (Estudiante e : lista1) {
-			logger.info(e.toString());
-		}
+		// List<Estudiante> lista1 = this.estudianteService.buscarValorCriteriaAPI(new BigDecimal("21"));
+		// for (Estudiante e : lista1) {
+		// 	logger.info(e.toString());
+		// }
 
 		
-		Estudiante e1 = this.estudianteService.buscarEstudianteCriteriaAPI("Armando", "Mendoza", "Quimica");
-		logger.info(e1.toString());
+		// Estudiante e1 = this.estudianteService.buscarEstudianteCriteriaAPI("Armando", "Mendoza", "Quimica");
+		// logger.info(e1.toString());
+		
 		
 
 		

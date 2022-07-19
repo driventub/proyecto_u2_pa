@@ -3,11 +3,15 @@ package com.uce.unidad2.repository;
 import java.util.List;
 
 import com.uce.unidad2.repository.modelo.Persona;
+import com.uce.unidad2.repository.modelo.PersonaContadorGenero;
+import com.uce.unidad2.repository.modelo.PersonaSencilla;
 
 public interface IPersonaJpaRepo {
     public List<Persona> buscarGenero(String genero);
 
     public List<Persona> buscarApellido(String apellido);
+
+    public List<PersonaSencilla> buscarApellidoSencilla(String apellido);
 
     public List<Persona> buscarNombre(String nombre);
 
@@ -43,5 +47,9 @@ public interface IPersonaJpaRepo {
     public Persona buscarDinamica(String nombre, String apellido, String genero);
 
     public Persona buscarDinamicaPred(String nombre, String apellido, String genero);
+
+    public List<PersonaContadorGenero> contarGenero();
+
+    
 
 }
