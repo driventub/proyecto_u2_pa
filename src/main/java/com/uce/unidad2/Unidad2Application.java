@@ -1,6 +1,6 @@
 package com.uce.unidad2;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,8 +9,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.unidad2.repository.modelo.PersonaContadorGenero;
-import com.uce.unidad2.repository.modelo.PersonaSencilla;
+import com.uce.unidad2.repository.modelo.Ciudadano;
+import com.uce.unidad2.repository.modelo.Empleado;
+import com.uce.unidad2.service.ICiudadanoService;
 import com.uce.unidad2.service.IPersonaJpaService;
 
 @SpringBootApplication
@@ -19,7 +20,7 @@ public class Unidad2Application implements CommandLineRunner {
 
 
 	@Autowired
-	private IPersonaJpaService personaJpaService;
+	private ICiudadanoService ciudadanoService;
 
 	private static Logger logger = LogManager.getLogger(Unidad2Application.class);
 
@@ -29,20 +30,22 @@ public class Unidad2Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// List<PersonaSencilla> listaP = this.personaJpaService.buscarApellidoSencilla("Bolaños");
-
-		// for (PersonaSencilla p : listaP) {
-		// 	logger.info(p.toString());
-		// }
-
-		// List<PersonaContadorGenero> listaGenero = this.personaJpaService.contarGenero();
-
-		// for (PersonaContadorGenero p : listaGenero) {
-		// 	logger.info(p.toString());
-		// }
-
 	
+	
+		Ciudadano ciudadano = new Ciudadano();
 
+		ciudadano.setApellido("Haas");
+		ciudadano.setNombre("Gabriela");
+
+		Empleado emp = new Empleado();
+		
+		emp.setCodigoIESS("7827183");
+		emp.setSalario(new BigDecimal("4000.22"));
+		emp.setCiudadano(ciudadano);
+
+		ciudadano.setEmpleado(emp);
+
+		this.ciudadanoService.insertar(ciudadano);
 		
 	}
 

@@ -32,21 +32,21 @@ public class TareasApp implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		
-		Estudiante estudiante = new Estudiante();
-			estudiante.setNombre("Jessica");
-			estudiante.setApellido("Simba");
-			estudiante.setCurso("Matematica");
-			estudiante.setValorMatricula(new BigDecimal("88.88"));
+		// Estudiante estudiante = new Estudiante();
+		// 	estudiante.setNombre("Jessica");
+		// 	estudiante.setApellido("Simba");
+		// 	estudiante.setCurso("Matematica");
+		// 	estudiante.setValorMatricula(new BigDecimal("88.88"));
 
-		// this.estudianteService.insertar(estudiante);
+		// // this.estudianteService.insertar(estudiante);
 		
-		List<EstudianteSencillo> e1 = this.estudianteService.buscarValorSencillo(new BigDecimal("51.00"));
-		for (EstudianteSencillo estudianteSencillo : e1) {
-			logger.info(estudianteSencillo.toString());
-		}
+		// List<EstudianteSencillo> e1 = this.estudianteService.buscarValorSencillo(new BigDecimal("51.00"));
+		// for (EstudianteSencillo estudianteSencillo : e1) {
+		// 	logger.info(estudianteSencillo.toString());
+		// }
 		
-		EstudianteContarMateria e2 = this.estudianteService.buscarCantidadEstudiantesSencillo("Quimica");
-		logger.info(e2.toString());
+		// EstudianteContarMateria e2 = this.estudianteService.buscarCantidadEstudiantesSencillo("Quimica");
+		// logger.info(e2.toString());
 		
 
 		
