@@ -32,20 +32,20 @@ public class Unidad2Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 	
 	
-		Ciudadano ciudadano = new Ciudadano();
+		// Ciudadano ciudadano = new Ciudadano();
 
-		ciudadano.setApellido("Haas");
-		ciudadano.setNombre("Gabriela");
+		// ciudadano.setApellido("Haas");
+		// ciudadano.setNombre("Gabriela");
 
-		Empleado emp = new Empleado();
+		// Empleado emp = new Empleado();
 		
-		emp.setCodigoIESS("7827183");
-		emp.setSalario(new BigDecimal("4000.22"));
-		emp.setCiudadano(ciudadano);
+		// emp.setCodigoIESS("7827183");
+		// emp.setSalario(new BigDecimal("4000.22"));
+		// emp.setCiudadano(ciudadano);
 
-		ciudadano.setEmpleado(emp);
+		// ciudadano.setEmpleado(emp);
 
-		this.ciudadanoService.insertar(ciudadano);
+		// this.ciudadanoService.insertar(ciudadano);
 		
 	}
 
