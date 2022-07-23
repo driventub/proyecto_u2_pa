@@ -46,15 +46,15 @@ public class TareasApp implements CommandLineRunner{
 
 
 
-		this.ciudadanoService.insertar(ciudadano);
+		// this.ciudadanoService.insertar(ciudadano);
 
-		CiudadanoP cBuscar = this.ciudadanoService.buscar(2);
-		logger.info(cBuscar.toString());
+		// CiudadanoP cBuscar = this.ciudadanoService.buscar(2);
+		// logger.info(cBuscar.toString());
 
-		ciudadano.setNombre("Luisa");
-		this.ciudadanoService.actualizar(ciudadano);
+		// ciudadano.setNombre("Luisa");
+		// this.ciudadanoService.actualizar(ciudadano);
 
-		this.ciudadanoService.eliminar(1);
+		// this.ciudadanoService.eliminar(1);
 		
 
 		

@@ -1,4 +1,4 @@
-package com.uce.unidad2.repository.modelo;
+package com.uce.unidad2.repository.modelo.onetoone;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

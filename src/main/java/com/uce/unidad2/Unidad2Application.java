@@ -1,6 +1,7 @@
 package com.uce.unidad2;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,10 +10,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.unidad2.repository.modelo.Ciudadano;
-import com.uce.unidad2.repository.modelo.Empleado;
-import com.uce.unidad2.service.ICiudadanoService;
-import com.uce.unidad2.service.IPersonaJpaService;
+import com.uce.unidad2.repository.modelo.onetomany.Habitacion;
+import com.uce.unidad2.repository.modelo.onetomany.Hotel;
+import com.uce.unidad2.service.IHabitacionService;
+import com.uce.unidad2.service.IHotelService;
 
 @SpringBootApplication
 public class Unidad2Application implements CommandLineRunner {
@@ -20,7 +21,10 @@ public class Unidad2Application implements CommandLineRunner {
 
 
 	@Autowired
-	private ICiudadanoService ciudadanoService;
+	private IHotelService hotelService;
+	
+	@Autowired
+	private IHabitacionService habiService;
 
 	private static Logger logger = LogManager.getLogger(Unidad2Application.class);
 
@@ -31,21 +35,36 @@ public class Unidad2Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 	
-	
-		// Ciudadano ciudadano = new Ciudadano();
+		Hotel hotel = new Hotel();
+		Habitacion h1 = new Habitacion();
+		Habitacion h2 = new Habitacion();
+		List<Habitacion> habitaciones = new ArrayList<>();
 
-		// ciudadano.setApellido("Haas");
-		// ciudadano.setNombre("Gabriela");
 
-		// Empleado emp = new Empleado();
+		hotel.setNombre("Marriot");
+		hotel.setDireccion("Amazonas y Miraflores");
 		
-		// emp.setCodigoIESS("7827183");
-		// emp.setSalario(new BigDecimal("4000.22"));
-		// emp.setCiudadano(ciudadano);
+		h1.setNumero("11");
+		h1.setPiso("1");
+		h1.setTipo("Basement");
+		h1.setHotel(hotel);
 
-		// ciudadano.setEmpleado(emp);
+		h2.setNumero("11A");
+		h2.setPiso("3");
+		h2.setTipo("Basement");
+		h2.setHotel(hotel);
 
-		// this.ciudadanoService.insertar(ciudadano);
+		habitaciones.add(h1);
+		habitaciones.add(h2);
+
+		hotel.setHabitaciones(habitaciones);
+
+		this.hotelService.insertar(hotel);
+
+		this.habiService.insertar(h1);
+
+		
+		
 		
 	}
 
