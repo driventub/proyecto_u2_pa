@@ -1,6 +1,8 @@
 package com.uce.unidad2;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,16 +11,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.unidad2.tareas.repository.modelo.CiudadanoP;
-import com.uce.unidad2.tareas.repository.modelo.Pasaporte;
-import com.uce.unidad2.tareas.service.ICiudadanoPService;
+import com.uce.unidad2.tareas.repository.modelo.Examen;
+import com.uce.unidad2.tareas.repository.modelo.Paciente;
+import com.uce.unidad2.tareas.service.IPacienteService;
 
 @SpringBootApplication
 public class TareasApp implements CommandLineRunner{
 
-
 	@Autowired
-	private ICiudadanoPService ciudadanoService;
+	private IPacienteService pacienteService;
 
 	private static Logger logger =  LogManager.getLogger(TareasApp.class);
 
@@ -28,33 +29,55 @@ public class TareasApp implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		Paciente p = new Paciente();
+		Examen hematica = new Examen();
+		Examen hormonal = new Examen();
+		Examen copro = new Examen();
+		List<Examen> examenes = new ArrayList<>();
+
+		p.setNombre("Lilith");
+		p.setApellido("Amaya");
+		p.setCedula("171324646-0");
+		p.setEdad(46);
+		p.setNumTelefono("0986732211");
+
+		hematica.setNumero("3BH");
+		hematica.setFecha(LocalDateTime.of(2022, 04, 16, 13, 00, 00));
+		hematica.setTipo("Biometrica Hematica");
 		
-		CiudadanoP ciudadano = new CiudadanoP();
-		Pasaporte pasaporte = new Pasaporte();
+		hormonal.setNumero("3QS");
+		hormonal.setFecha(LocalDateTime.of(2022, 04, 16, 14, 00, 00));
+		hormonal.setTipo("Quimica Sanguinea/Hormonal");
+		
+		copro.setNumero("3CP");
+		copro.setFecha(LocalDateTime.of(2022, 04, 16, 15, 00, 00));
+		copro.setTipo("Coproparasitario");
 
-		ciudadano.setNombre("Luisiana");
-		ciudadano.setApellido("Montero");
-		ciudadano.setCedula("170318055-6");
-		ciudadano.setFechaNacimiento(LocalDateTime.of(1999, 10, 10, 01, 01, 01));
+		examenes.add(hematica);
+		examenes.add(hormonal);
+		examenes.add(copro);
 
-		pasaporte.setNumero(ciudadano.getCedula());
-		pasaporte.setFechaEmision(LocalDateTime.now());
-		pasaporte.setFechaCaducidad(LocalDateTime.of(2030, 10, 10, 01, 01, 01));
-		pasaporte.setCiudadano(ciudadano);
+		for (Examen examen : examenes) {
+			examen.setPaciente(p);
+		}
 
-		ciudadano.setPasaporte(pasaporte);
+		p.setExamenes(examenes);
+
+		// CRUD
+		this.pacienteService.insertar(p);
+
+		p.setNombre("Lilia");
+		this.pacienteService.actualizar(p);
+
+		this.pacienteService.buscar(1);
+
+		this.pacienteService.eliminar(1);
+
+		
 
 
+		
 
-		// this.ciudadanoService.insertar(ciudadano);
-
-		// CiudadanoP cBuscar = this.ciudadanoService.buscar(2);
-		// logger.info(cBuscar.toString());
-
-		// ciudadano.setNombre("Luisa");
-		// this.ciudadanoService.actualizar(ciudadano);
-
-		// this.ciudadanoService.eliminar(1);
 		
 
 		

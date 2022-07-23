@@ -35,33 +35,33 @@ public class Unidad2Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 	
-		Hotel hotel = new Hotel();
-		Habitacion h1 = new Habitacion();
-		Habitacion h2 = new Habitacion();
-		List<Habitacion> habitaciones = new ArrayList<>();
+		// Hotel hotel = new Hotel();
+		// Habitacion h1 = new Habitacion();
+		// Habitacion h2 = new Habitacion();
+		// List<Habitacion> habitaciones = new ArrayList<>();
 
 
-		hotel.setNombre("Marriot");
-		hotel.setDireccion("Amazonas y Miraflores");
+		// hotel.setNombre("Marriot");
+		// hotel.setDireccion("Amazonas y Miraflores");
 		
-		h1.setNumero("11");
-		h1.setPiso("1");
-		h1.setTipo("Basement");
-		h1.setHotel(hotel);
+		// h1.setNumero("11");
+		// h1.setPiso("1");
+		// h1.setTipo("Basement");
+		// h1.setHotel(hotel);
 
-		h2.setNumero("11A");
-		h2.setPiso("3");
-		h2.setTipo("Basement");
-		h2.setHotel(hotel);
+		// h2.setNumero("11A");
+		// h2.setPiso("3");
+		// h2.setTipo("Basement");
+		// h2.setHotel(hotel);
 
-		habitaciones.add(h1);
-		habitaciones.add(h2);
+		// habitaciones.add(h1);
+		// habitaciones.add(h2);
 
-		hotel.setHabitaciones(habitaciones);
+		// hotel.setHabitaciones(habitaciones);
 
-		this.hotelService.insertar(hotel);
+		// this.hotelService.insertar(hotel);
 
-		this.habiService.insertar(h1);
+		// this.habiService.insertar(h1);
 
 		
 		
