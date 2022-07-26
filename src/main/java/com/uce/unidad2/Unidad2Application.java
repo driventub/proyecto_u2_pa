@@ -1,7 +1,7 @@
 package com.uce.unidad2;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,21 +10,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.unidad2.repository.modelo.onetomany.Habitacion;
-import com.uce.unidad2.repository.modelo.onetomany.Hotel;
-import com.uce.unidad2.service.IHabitacionService;
-import com.uce.unidad2.service.IHotelService;
+import com.uce.unidad2.repository.modelo.manytomany.Autor;
+import com.uce.unidad2.repository.modelo.manytomany.Libro;
+import com.uce.unidad2.service.ILibroService;
 
 @SpringBootApplication
 public class Unidad2Application implements CommandLineRunner {
 	
 
-
 	@Autowired
-	private IHotelService hotelService;
-	
-	@Autowired
-	private IHabitacionService habiService;
+	private ILibroService libroService;
 
 	private static Logger logger = LogManager.getLogger(Unidad2Application.class);
 
@@ -34,37 +29,32 @@ public class Unidad2Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+			
+		Libro l1 = new Libro();
+		Autor a1 = new Autor();
+		
+		
+		
+		Set<Autor> listaAutores = new HashSet<>();
+
+
+
+		l1.setTitulo("La mouche");
+		l1.setNumPaginas(333);
+		
+
+		
+		a1.setNombre("Jose Perez");
+		
+		listaAutores.add(a1);
+		
+		l1.setAutores(listaAutores);
 	
-		// Hotel hotel = new Hotel();
-		// Habitacion h1 = new Habitacion();
-		// Habitacion h2 = new Habitacion();
-		// List<Habitacion> habitaciones = new ArrayList<>();
-
-
-		// hotel.setNombre("Marriot");
-		// hotel.setDireccion("Amazonas y Miraflores");
-		
-		// h1.setNumero("11");
-		// h1.setPiso("1");
-		// h1.setTipo("Basement");
-		// h1.setHotel(hotel);
-
-		// h2.setNumero("11A");
-		// h2.setPiso("3");
-		// h2.setTipo("Basement");
-		// h2.setHotel(hotel);
-
-		// habitaciones.add(h1);
-		// habitaciones.add(h2);
-
-		// hotel.setHabitaciones(habitaciones);
-
-		// this.hotelService.insertar(hotel);
-
-		// this.habiService.insertar(h1);
 
 		
+		this.libroService.insertar(l1);
 		
+
 		
 	}
 

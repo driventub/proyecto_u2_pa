@@ -29,49 +29,49 @@ public class TareasApp implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Paciente p = new Paciente();
-		Examen hematica = new Examen();
-		Examen hormonal = new Examen();
-		Examen copro = new Examen();
-		List<Examen> examenes = new ArrayList<>();
+		// Paciente p = new Paciente();
+		// Examen hematica = new Examen();
+		// Examen hormonal = new Examen();
+		// Examen copro = new Examen();
+		// List<Examen> examenes = new ArrayList<>();
 
-		p.setNombre("Lilith");
-		p.setApellido("Amaya");
-		p.setCedula("171324646-0");
-		p.setEdad(46);
-		p.setNumTelefono("0986732211");
+		// p.setNombre("Lilith");
+		// p.setApellido("Amaya");
+		// p.setCedula("171324646-0");
+		// p.setEdad(46);
+		// p.setNumTelefono("0986732211");
 
-		hematica.setNumero("3BH");
-		hematica.setFecha(LocalDateTime.of(2022, 04, 16, 13, 00, 00));
-		hematica.setTipo("Biometrica Hematica");
+		// hematica.setNumero("3BH");
+		// hematica.setFecha(LocalDateTime.of(2022, 04, 16, 13, 00, 00));
+		// hematica.setTipo("Biometrica Hematica");
 		
-		hormonal.setNumero("3QS");
-		hormonal.setFecha(LocalDateTime.of(2022, 04, 16, 14, 00, 00));
-		hormonal.setTipo("Quimica Sanguinea/Hormonal");
+		// hormonal.setNumero("3QS");
+		// hormonal.setFecha(LocalDateTime.of(2022, 04, 16, 14, 00, 00));
+		// hormonal.setTipo("Quimica Sanguinea/Hormonal");
 		
-		copro.setNumero("3CP");
-		copro.setFecha(LocalDateTime.of(2022, 04, 16, 15, 00, 00));
-		copro.setTipo("Coproparasitario");
+		// copro.setNumero("3CP");
+		// copro.setFecha(LocalDateTime.of(2022, 04, 16, 15, 00, 00));
+		// copro.setTipo("Coproparasitario");
 
-		examenes.add(hematica);
-		examenes.add(hormonal);
-		examenes.add(copro);
+		// examenes.add(hematica);
+		// examenes.add(hormonal);
+		// examenes.add(copro);
 
-		for (Examen examen : examenes) {
-			examen.setPaciente(p);
-		}
+		// for (Examen examen : examenes) {
+		// 	examen.setPaciente(p);
+		// }
 
-		p.setExamenes(examenes);
+		// p.setExamenes(examenes);
 
-		// CRUD
-		this.pacienteService.insertar(p);
+		// // CRUD
+		// this.pacienteService.insertar(p);
 
-		p.setNombre("Lilia");
-		this.pacienteService.actualizar(p);
+		// p.setNombre("Lilia");
+		// this.pacienteService.actualizar(p);
 
-		this.pacienteService.buscar(1);
+		// this.pacienteService.buscar(1);
 
-		this.pacienteService.eliminar(1);
+		// this.pacienteService.eliminar(1);
 
 		
 
