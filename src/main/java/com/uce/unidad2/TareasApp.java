@@ -1,6 +1,5 @@
 package com.uce.unidad2;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,15 +10,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.unidad2.tareas.repository.modelo.Examen;
-import com.uce.unidad2.tareas.repository.modelo.Paciente;
-import com.uce.unidad2.tareas.service.IPacienteService;
+import com.uce.unidad2.tareas.repository.modelo.Autor2;
+import com.uce.unidad2.tareas.repository.modelo.Libro2;
+import com.uce.unidad2.tareas.repository.modelo.LibroAutor2;
+import com.uce.unidad2.tareas.service.ILibroAutor2Service;
 
 @SpringBootApplication
 public class TareasApp implements CommandLineRunner{
 
 	@Autowired
-	private IPacienteService pacienteService;
+	private ILibroAutor2Service libroAutorService;
 
 	private static Logger logger =  LogManager.getLogger(TareasApp.class);
 
@@ -29,52 +29,54 @@ public class TareasApp implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		// Paciente p = new Paciente();
-		// Examen hematica = new Examen();
-		// Examen hormonal = new Examen();
-		// Examen copro = new Examen();
-		// List<Examen> examenes = new ArrayList<>();
-
-		// p.setNombre("Lilith");
-		// p.setApellido("Amaya");
-		// p.setCedula("171324646-0");
-		// p.setEdad(46);
-		// p.setNumTelefono("0986732211");
-
-		// hematica.setNumero("3BH");
-		// hematica.setFecha(LocalDateTime.of(2022, 04, 16, 13, 00, 00));
-		// hematica.setTipo("Biometrica Hematica");
 		
-		// hormonal.setNumero("3QS");
-		// hormonal.setFecha(LocalDateTime.of(2022, 04, 16, 14, 00, 00));
-		// hormonal.setTipo("Quimica Sanguinea/Hormonal");
 		
-		// copro.setNumero("3CP");
-		// copro.setFecha(LocalDateTime.of(2022, 04, 16, 15, 00, 00));
-		// copro.setTipo("Coproparasitario");
+		Libro2 l1 = new Libro2();
+		Libro2 l2 = new Libro2();
 
-		// examenes.add(hematica);
-		// examenes.add(hormonal);
-		// examenes.add(copro);
+		Autor2 a1 = new Autor2();
+		Autor2 a2 = new Autor2();
 
-		// for (Examen examen : examenes) {
-		// 	examen.setPaciente(p);
-		// }
-
-		// p.setExamenes(examenes);
-
-		// // CRUD
-		// this.pacienteService.insertar(p);
-
-		// p.setNombre("Lilia");
-		// this.pacienteService.actualizar(p);
-
-		// this.pacienteService.buscar(1);
-
-		// this.pacienteService.eliminar(1);
-
+		LibroAutor2 liau = new LibroAutor2();
+		LibroAutor2 liau1 = new LibroAutor2();
+		
+		
 		
 
+		l1.setNumPaginas(33);
+		l1.setTitulo("Cenicienta");
+
+		l2.setNumPaginas(55);
+		l2.setTitulo("Principito");
+
+		a1.setNombre("Sigmoud Freud");
+		a2.setNombre("Kun Aguero");
+
+		// Dos autores, un libro
+		
+
+		liau.setAutor2(a1);
+		liau.setLibro2(l1);
+
+		this.libroAutorService.insertar(liau);
+		
+		// liau.setAutor2(a1);
+		// liau.setLibro2(l2);
+
+		// this.libroAutorService.insertar(liau);
+
+		// // Dos libros, un autor
+
+		
+		// liau1.setAutor2(a1);
+		// liau1.setLibro2(l1);
+
+		// this.libroAutorService.insertar(liau1);
+		
+		// liau1.setAutor2(a1);
+		// liau1.setLibro2(l2);
+
+		// this.libroAutorService.insertar(liau1);
 
 		
 

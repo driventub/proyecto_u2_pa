@@ -30,29 +30,29 @@ public class Unidad2Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 			
-		Libro l1 = new Libro();
-		Autor a1 = new Autor();
+		// Libro l1 = new Libro();
+		// Autor a1 = new Autor();
 		
 		
 		
-		Set<Autor> listaAutores = new HashSet<>();
+		// Set<Autor> listaAutores = new HashSet<>();
 
 
 
-		l1.setTitulo("La mouche");
-		l1.setNumPaginas(333);
+		// l1.setTitulo("La mouche");
+		// l1.setNumPaginas(333);
 		
 
 		
-		a1.setNombre("Jose Perez");
+		// a1.setNombre("Jose Perez");
 		
-		listaAutores.add(a1);
+		// listaAutores.add(a1);
 		
-		l1.setAutores(listaAutores);
+		// l1.setAutores(listaAutores);
 	
 
 		
-		this.libroService.insertar(l1);
+		// this.libroService.insertar(l1);
 		
 
 		
